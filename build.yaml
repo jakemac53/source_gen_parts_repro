@@ -4,18 +4,22 @@ builders:
     builder_factories: ["create"]
     build_extensions: {".dart": [".custom.dart"]}
     build_to: source
+    runs_before:
+      - :source_gen_parts_repro_2
+  source_gen_parts_repro_2:
+    import: "package:source_gen_parts_repro/builder.dart"
+    builder_factories: ["create2"]
+    build_extensions: {".dart": [".custom2.dart"]}
+    build_to: source
 
 targets:
   $default:
     builders:
-      built_value_generator|built_value:
-        enabled: false
-      source_gen_parts_repro:
+      :source_gen_parts_repro:
         enabled: true
-  
-  json:
-    dependencies:
-      - source_gen_parts_repro
-    builders:
-      built_value_generator|built_value:
+        generate_for:
+          - lib/input*
+      :source_gen_parts_repro_2:
         enabled: true
+        generate_for:
+          - lib/input*

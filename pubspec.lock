@@ -53,9 +53,9 @@ packages:
   build_resolvers:
     dependency: "direct dev"
     description:
-      name: build_resolvers
-      url: "https://pub.dartlang.org"
-    source: hosted
+      path: "../build/build_resolvers"
+      relative: true
+    source: path
     version: "1.3.3"
   build_runner:
     dependency: "direct dev"
@@ -333,9 +333,9 @@ packages:
   source_gen:
     dependency: "direct main"
     description:
-      name: source_gen
-      url: "https://pub.dartlang.org"
-    source: hosted
+      path: "../source_gen/source_gen"
+      relative: true
+    source: path
     version: "0.9.4+7"
   source_span:
     dependency: transitive
