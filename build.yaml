@@ -1,0 +1,21 @@
+builders:
+  source_gen_parts_repro:
+    import: "package:source_gen_parts_repro/builder.dart"
+    builder_factories: ["create"]
+    build_extensions: {".dart": [".custom.dart"]}
+    build_to: source
+
+targets:
+  $default:
+    builders:
+      built_value_generator|built_value:
+        enabled: false
+      source_gen_parts_repro:
+        enabled: true
+  
+  json:
+    dependencies:
+      - source_gen_parts_repro
+    builders:
+      built_value_generator|built_value:
+        enabled: true
